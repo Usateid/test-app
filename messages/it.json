@@ -1,0 +1,138 @@
+{
+  "common": {
+    "welcome": "Benvenuto",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "create": "Crea",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "submit": "Invia",
+    "confirm": "Conferma",
+    "close": "Chiudi",
+    "lesson": "Lezione",
+    "lessons": "Lezioni",
+    "saving": "Salvataggio...",
+    "saveChanges": "Salva modifiche",
+    "noSubscriptionsFound": "Nessun abbonamento trovato",
+    "lastActivity": "Ultima lezione"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profilo",
+    "booking": "Prenotazioni",
+    "admin": "Amministrazione",
+    "lessons": "Lezioni",
+    "activities": "Attività",
+    "subscriptions": "Abbonamenti",
+    "teachers": "Insegnanti",
+    "users": "Utenti",
+    "logout": "Esci"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "forgotPassword": "Password dimenticata?",
+    "dontHaveAccount": "Non hai un account?",
+    "alreadyHaveAccount": "Hai già un account?"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Buongiorno",
+      "afternoon": "Buon pomeriggio",
+      "evening": "Buonasera"
+    },
+    "welcome": "Benvenuto nella tua area personale. Ecco un riepilogo della tua attività.",
+    "quoteOfDay": "Citazione del giorno",
+    "upcomingLessons": "Prossime Lezioni",
+    "yourScheduledLessons": "Le tue lezioni programmate",
+    "noLessonsBooked": "Non hai ancora prenotato nessuna lezione",
+    "bookALesson": "Prenota una lezione",
+    "activeSubscriptions": "Abbonamenti Attivi",
+    "yourCurrentSubscriptions": "I tuoi abbonamenti correnti",
+    "noActiveSubscriptions": "Nessun abbonamento attivo",
+    "noSubscriptionsMessage": "Non hai abbonamenti attivi al momento",
+    "newSubscriptionButton": "Nuovo abbonamento",
+    "daysRemaining": "{days} giorni rimanenti",
+    "expired": "Scaduto",
+    "expiresOn": "Scade il {date}",
+    "entriesPerDay": "{count} ingresso/i al giorno",
+    "entriesPerWeek": "{count} ingresso/i a settimana"
+  },
+  "quotes": [
+    {
+      "text": "Il corpo raggiunge ciò che la mente crede.",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "La differenza tra il possibile e l'impossibile sta nella determinazione.",
+      "author": "Tommy Lasorda"
+    },
+    {
+      "text": "Non conta da dove parti, conta dove vuoi arrivare.",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Il successo non è definitivo, il fallimento non è fatale: ciò che conta è il coraggio di andare avanti.",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "La forza non viene da ciò che puoi fare, ma dal superare le cose che pensavi di non poter fare.",
+      "author": "Rikki Rogers"
+    },
+    {
+      "text": "Il dolore che senti oggi sarà la forza che senti domani.",
+      "author": "Arnold Schwarzenegger"
+    },
+    {
+      "text": "Non aspettare il momento perfetto. Prendi il momento e rendilo perfetto.",
+      "author": "Zoey Sayward"
+    }
+  ],
+  "profile": {
+    "title": "Profilo",
+    "editProfile": "Modifica Profilo",
+    "personalInfo": "Informazioni Personali",
+    "accountSettings": "Impostazioni Account",
+    "mySubscriptions": "I miei abbonamenti",
+    "settings": {
+      "title": "Impostazioni",
+      "language": "Cambia lingua",
+      "theme": "Cambia tema"
+    },
+    "edit": {
+      "title": "Modifica Utente",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "phoneNumber": "Numero di telefono",
+      "address": "Indirizzo di residenza",
+      "city": "Città di residenza",
+      "country": "Nazione",
+      "zipCode": "CAP",
+      "birthDate": "Data di nascita",
+      "taxCode": "Codice fiscale",
+      "userUpdated": "Utente aggiornato con successo"
+    }
+  },
+  "subscriptions": {
+    "title": "Abbonamenti",
+    "description": "Gestisci i tuoi abbonamenti",
+    "price": "Prezzo",
+    "fromDate": "Data di inizio",
+    "toDate": "Data di fine",
+    "entriesPerDay": "Ingressi al giorno",
+    "entriesPerWeek": "{count} {count, plural, =1 {Ingresso} other {Ingressi}} a settimana",
+    "chooseThisPlan": "Scegli questo piano"
+  }
+}
+

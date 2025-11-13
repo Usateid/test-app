@@ -1,0 +1,138 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "close": "Close",
+    "lesson": "Lesson",
+    "lessons": "Lessons",
+    "saving": "Saving...",
+    "saveChanges": "Save changes",
+    "noSubscriptionsFound": "No subscriptions found",
+    "lastActivity": "Last activity"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "booking": "Booking",
+    "admin": "Administration",
+    "lessons": "Lessons",
+    "activities": "Activities",
+    "subscriptions": "Subscriptions",
+    "teachers": "Teachers",
+    "users": "Users",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "forgotPassword": "Forgot password?",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "welcome": "Welcome to your personal area. Here's a summary of your activity.",
+    "quoteOfDay": "Quote of the Day",
+    "upcomingLessons": "Upcoming Lessons",
+    "yourScheduledLessons": "Your scheduled lessons",
+    "noLessonsBooked": "You haven't booked any lessons yet",
+    "bookALesson": "Book a lesson",
+    "activeSubscriptions": "Active Subscriptions",
+    "yourCurrentSubscriptions": "Your current subscriptions",
+    "noActiveSubscriptions": "No active subscriptions",
+    "noSubscriptionsMessage": "You don't have any active subscriptions at the moment",
+    "newSubscriptionButton": "New subscription",
+    "daysRemaining": "{days} days remaining",
+    "expired": "Expired",
+    "expiresOn": "Expires on {date}",
+    "entriesPerDay": "{count} entry/entries per day",
+    "entriesPerWeek": "{count} entry/entries per week"
+  },
+  "quotes": [
+    {
+      "text": "The body achieves what the mind believes.",
+      "author": "Napoleon Hill"
+    },
+    {
+      "text": "The difference between the possible and the impossible lies in determination.",
+      "author": "Tommy Lasorda"
+    },
+    {
+      "text": "It doesn't matter where you start, it matters where you want to go.",
+      "author": "Zig Ziglar"
+    },
+    {
+      "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "author": "Winston Churchill"
+    },
+    {
+      "text": "Strength doesn't come from what you can do. It comes from overcoming the things you once thought you couldn't.",
+      "author": "Rikki Rogers"
+    },
+    {
+      "text": "The pain you feel today will be the strength you feel tomorrow.",
+      "author": "Arnold Schwarzenegger"
+    },
+    {
+      "text": "Don't wait for the perfect moment. Take the moment and make it perfect.",
+      "author": "Zoey Sayward"
+    }
+  ],
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Edit Profile",
+    "personalInfo": "Personal Information",
+    "accountSettings": "Account Settings",
+    "mySubscriptions": "My Subscriptions",
+    "settings": {
+      "title": "Settings",
+      "language": "Change language",
+      "theme": "Change theme"
+    },
+    "edit": {
+      "title": "Edit User",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phoneNumber": "Phone Number",
+      "address": "Address",
+      "city": "City",
+      "country": "Country",
+      "zipCode": "ZIP Code",
+      "birthDate": "Birth Date",
+      "taxCode": "Tax Code",
+      "userUpdated": "User updated successfully"
+    }
+  },
+  "subscriptions": {
+    "title": "Subscriptions",
+    "description": "Manage your subscriptions",
+    "price": "Price",
+    "fromDate": "From Date",
+    "toDate": "To Date",
+    "entriesPerDay": "Entries per day",
+    "entriesPerWeek": "{count} {count, plural, =1 {Entry} other {Entries}} per week",
+    "chooseThisPlan": "Choose this plan"
+  }
+}
+
