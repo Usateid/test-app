@@ -8,6 +8,7 @@ import {
 import { sql } from "drizzle-orm";
 
 import { centersEnum } from "./enums";
+import { user } from "./auth";
 
 export const activities = pgTable("activities", {
   id: text("id")
@@ -16,9 +17,14 @@ export const activities = pgTable("activities", {
   name: text("name").notNull(),
   description: text("description"),
   image: text("image"),
+  date: timestamp("date").notNull(),
   duration: integer("duration").notNull().default(0),
   minParticipants: integer("min_participants").notNull().default(1),
   maxParticipants: integer("max_participants").notNull().default(10),
+  teacherId: text("teacher_id").references(() => user.id, {
+    onDelete: "set null",
+  }),
+  location: text("location"),
   redirectUrl: text("redirect_url"),
   isActive: boolean("is_active").notNull().default(true),
   center: centersEnum("center").notNull().default("Vasto"),

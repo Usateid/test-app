@@ -1,28 +1,13 @@
 import { getServerSession } from "@/hooks/server-session";
-import { getUserActiveSubscriptions } from "@/db/query/user-subscriptions";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { UserCircle2, Edit, Settings } from "lucide-react";
-// import UserHeader from "@/components/profile/user/header";
 import UserPicture from "@/components/profile/user/picture";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { getTranslations } from "next-intl/server";
-import { LanguageSwitcher } from "@/components/common/language-switcher";
-import { ModeToggle } from "@/components/theme-toggle";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import LastActivities from "@/components/profile/user/last-activities";
 
 export default async function ProfilePage() {
   const { isAuthenticated, userInfo, session } = await getServerSession();
-  const t = await getTranslations("profile");
 
   if (!isAuthenticated || !userInfo || !userInfo.userId) {
     redirect("/login");
@@ -37,7 +22,11 @@ export default async function ProfilePage() {
           <div className="flex justify-center items-center space-x-4">
             {/* <Edit className="size-6" /> */}
             <div className="flex flex-col items-center justify-center space-y-6">
-              <UserPicture />
+              <UserPicture
+                imageUrl={userInfo.image}
+                firstName={userInfo.firstName}
+                lastName={userInfo.lastName}
+              />
               <div className="flex flex-col items-center text-white">
                 <span className="text-2xl font-bold">
                   {userInfo.firstName} {userInfo.lastName}
@@ -45,30 +34,25 @@ export default async function ProfilePage() {
                 <span className="text-sm">{session?.user?.email}</span>
               </div>
             </div>
-            {/* <Link href="/dashboard/profile/edit">
-              <Settings className="size-6" />
-            </Link> */}
           </div>
         </div>
         <div className="relative w-full">
           <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
             <div className="bg-white px-6 py-5 shadow-xl">
               <div className="flex items-center space-x-4 h-5">
-                <div className="flex flex-col">
+                <div className="flex text-muted-foreground  flex-col">
                   <span className="font-bold">0</span>
-                  <span className="text-muted-foreground text-sm">lessons</span>
+                  <span className="text-sm">lessons</span>
                 </div>
                 <Separator orientation="vertical" />
-                <div className="flex flex-col">
+                <div className="flex text-muted-foreground  flex-col">
                   <span className="font-bold">0</span>
-                  <span className="text-muted-foreground text-sm">
-                    subscriptions
-                  </span>
+                  <span className="text-sm">subscriptions</span>
                 </div>
                 <Separator orientation="vertical" />
-                <div className="flex flex-col">
+                <div className="flex text-muted-foreground  flex-col">
                   <span className="font-bold">0</span>
-                  <span className="text-muted-foreground text-sm">lessons</span>
+                  <span className="text-sm">lessons</span>
                 </div>
               </div>
             </div>

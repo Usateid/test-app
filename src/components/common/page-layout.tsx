@@ -24,7 +24,7 @@ export default function PageLayout({
           {cta && <div className="flex items-center justify-end">{cta}</div>}
         </div>
       )}
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

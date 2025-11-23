@@ -11,7 +11,25 @@ import { z } from "zod";
 import { validatedAction } from "../utils";
 import { revalidatePath } from "next/cache";
 
-export async function getUserInformation(userId: string) {
+export type UserInformationWithEmailAndImage = {
+  userId: string;
+  firstName: string | null;
+  lastName: string | null;
+  role: "user" | "teacher" | "admin";
+  phoneNumber: string | null;
+  address: string | null;
+  city: string | null;
+  zipCode: string | null;
+  country: string | null;
+  birthDate: Date | null;
+  taxCode: string | null;
+  email: string;
+  image: string | null;
+};
+
+export async function getUserInformation(
+  userId: string
+): Promise<UserInformationWithEmailAndImage | null> {
   const [userInfo] = await db
     .select({
       userId: userInformation.userId,
@@ -21,7 +39,6 @@ export async function getUserInformation(userId: string) {
       phoneNumber: userInformation.phoneNumber,
       address: userInformation.address,
       city: userInformation.city,
-      state: userInformation.state,
       zipCode: userInformation.zipCode,
       country: userInformation.country,
       birthDate: userInformation.birthDate,
@@ -217,13 +234,14 @@ const updateProfileSchema = z.object({
   userId: z.string(),
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  phoneNumber: z.string().optional(),
-  address: z.string().optional(),
-  city: z.string().optional(),
-  zipCode: z.string().optional(),
-  country: z.string().optional(),
+  phoneNumber: z.string().min(1, "Phone number is required"),
+  address: z.string().min(12, "Address must be at least 12 characters long"),
+  city: z.string().min(1, "City is required"),
+  zipCode: z.string().min(1, "Zip code is required"),
+  country: z.string().min(1, "Country is required"),
   birthDate: z.string().optional(),
-  taxCode: z.string().optional(),
+  taxCode: z.string().min(1, "Tax code is required"),
+  state: z.string().min(1, "State is required"),
 });
 
 export const updateProfile = validatedAction(

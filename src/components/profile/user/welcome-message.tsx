@@ -5,22 +5,19 @@ type Props = {
 };
 
 export default async function WelcomeMessage({ firstName }: Props) {
-  const t = await getTranslations("dashboard");
-  // Ottiene l'ora attuale per un saluto appropriato
-  const currentHour = new Date().getHours();
-  let greeting = t("greeting.morning");
-  if (currentHour >= 12 && currentHour < 18) {
-    greeting = t("greeting.afternoon");
-  } else if (currentHour >= 18) {
-    greeting = t("greeting.evening");
-  }
+  // const t = await getTranslations("dashboard");
+  // const currentHour = new Date().getHours();
+  // let greeting = t("greeting.morning");
+  // if (currentHour >= 12 && currentHour < 18) {
+  //   greeting = t("greeting.afternoon");
+  // } else if (currentHour >= 18) {
+  //   greeting = t("greeting.evening");
+  // }
 
   return (
-    <div className="space-y-2">
-      <h1 className="text-3xl font-bold tracking-tight">
-        {greeting}, {firstName}! 👋
-      </h1>
-      <p className="text-muted-foreground">{t("welcome")}</p>
+    <div className="space-y-1 text-primary-foreground">
+      <h1 className="font-semibold">Ciao {firstName}! 👋</h1>
+      <p className="text-xl font-bold">Benvenuto nella tua area personale</p>
     </div>
   );
 }

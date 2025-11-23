@@ -1,7 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { registerTeacher } from "@/db/query/teacher-invitation";
 import { useActionState, useEffect } from "react";
 import { ActionState } from "@/db/utils";
@@ -11,7 +16,9 @@ interface TeacherRegistrationFormProps {
   token: string;
 }
 
-export default function TeacherRegistrationForm({ token }: TeacherRegistrationFormProps) {
+export default function TeacherRegistrationForm({
+  token,
+}: TeacherRegistrationFormProps) {
   const router = useRouter();
   const [state, formAction, pending] = useActionState<ActionState, FormData>(
     registerTeacher,
@@ -56,7 +63,7 @@ export default function TeacherRegistrationForm({ token }: TeacherRegistrationFo
   return (
     <form action={formAction} className="space-y-6">
       <input type="hidden" name="token" value={token} />
-      
+
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="password">Password</FieldLabel>
@@ -87,7 +94,9 @@ export default function TeacherRegistrationForm({ token }: TeacherRegistrationFo
 
       {state.error && (
         <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
-          <p className="text-sm text-red-600 dark:text-red-400">{state.error}</p>
+          <p className="text-sm text-red-600 dark:text-red-400">
+            {state.error}
+          </p>
         </div>
       )}
 
@@ -97,4 +106,3 @@ export default function TeacherRegistrationForm({ token }: TeacherRegistrationFo
     </form>
   );
 }
-

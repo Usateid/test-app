@@ -13,14 +13,17 @@ import { Badge } from "@/components/ui/badge";
 
 export default function ListActivities({
   activities,
+  teachers,
 }: {
   activities: ActivityType[];
+  teachers?: { id: string; name: string }[];
 }) {
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
+          <TableHead>Date</TableHead>
           <TableHead>Duration</TableHead>
           <TableHead>Participants</TableHead>
           <TableHead>Center</TableHead>
@@ -32,7 +35,7 @@ export default function ListActivities({
         {activities.length === 0 ? (
           <TableRow>
             <TableCell
-              colSpan={6}
+              colSpan={7}
               className="text-center text-muted-foreground"
             >
               No activities found. Add your first activity to get started.
@@ -42,6 +45,14 @@ export default function ListActivities({
           activities.map((activity) => (
             <TableRow key={activity.id}>
               <TableCell className="font-medium">{activity.name}</TableCell>
+              <TableCell>
+                {activity.date
+                  ? new Date(activity.date).toLocaleString("it-IT", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                    })
+                  : "-"}
+              </TableCell>
               <TableCell>{activity.duration} min</TableCell>
               <TableCell>
                 {activity.minParticipants} - {activity.maxParticipants}
@@ -53,7 +64,7 @@ export default function ListActivities({
                 </Badge>
               </TableCell>
               <TableCell className="justify-end gap-2 flex">
-                <EditActivity id={activity.id} />
+                <EditActivity id={activity.id} teachers={teachers} />
                 <DeleteActivity id={activity.id} />
               </TableCell>
             </TableRow>

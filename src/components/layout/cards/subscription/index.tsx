@@ -10,23 +10,23 @@ export default async function SubscriptionCard({
   subscription: SubscriptionType;
 }) {
   const t = await getTranslations("subscriptions");
-  const { isAuthenticated, session } = await getServerSession();
+  // const { isAuthenticated, session } = await getServerSession();
 
   return (
-    <div className="border rounded-lg p-4 flex justify-center w-full bg-amber-50 border-amber-200">
+    <div className="border rounded-lg p-4 flex justify-center w-full">
       <div className="flex flex-col gap-4">
         <p className="text-center font-semibold">{subscription.name}</p>
         <div className="flex items-center gap-2">
           <BadgeCheck className="size-4 text-green-500" />
           {t("entriesPerWeek", { count: subscription.entriesPerWeek })}
         </div>
-        {isAuthenticated && session?.user?.id && (
+        {/* {isAuthenticated && session?.user?.id && (
           <SaveSubscriptionButton
             userId={session.user.id}
             subscriptionId={subscription.id}
             durationInDays={subscription.durationInDays}
           />
-        )}
+        )} */}
       </div>
     </div>
     // <Card

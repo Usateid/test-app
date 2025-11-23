@@ -20,7 +20,7 @@ export default async function AdminLayout({
     <SidebarProvider>
       <AppSidebar />
       <main className="w-full">
-        <div className="mb-20 mt-4 px-4 max-w-5xl mx-auto">{children}</div>
+        <div className="mt-4 px-4 max-w-5xl mx-auto">{children}</div>
       </main>
     </SidebarProvider>
   );

@@ -29,7 +29,12 @@ import { CENTERS } from "@/utils/const";
 import { Pencil } from "lucide-react";
 import { type InsertActivityType } from "@/db/schema/actitivites";
 
-export default function EditActivity({ id }: { id: string }) {
+interface EditActivityProps {
+  id: string;
+  teachers?: { id: string; name: string }[];
+}
+
+export default function EditActivity({ id, teachers }: EditActivityProps) {
   const [open, setOpen] = useState(false);
   const [activity, setActivity] = useState<InsertActivityType | null>(null);
   const [loading, setLoading] = useState(false);
@@ -92,6 +97,22 @@ export default function EditActivity({ id }: { id: string }) {
                   className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-sage-500 focus:outline-none focus:ring-sage-500 min-h-[100px]"
                 />
                 <FieldError>{state.fieldErrors?.description}</FieldError>
+              </Field>
+
+              <Field>
+                <FieldLabel htmlFor="date">Date & Time</FieldLabel>
+                <Input
+                  name="date"
+                  type="datetime-local"
+                  id="date"
+                  defaultValue={
+                    activity.date
+                      ? new Date(activity.date).toISOString().slice(0, 16)
+                      : ""
+                  }
+                  required
+                />
+                <FieldError>{state.fieldErrors?.date}</FieldError>
               </Field>
 
               <div className="grid grid-cols-2 gap-4">
@@ -158,6 +179,40 @@ export default function EditActivity({ id }: { id: string }) {
                   <FieldError>{state.fieldErrors?.maxParticipants}</FieldError>
                 </Field>
               </div>
+
+              {teachers && teachers.length > 0 && (
+                <Field>
+                  <FieldLabel htmlFor="teacherId">Teacher</FieldLabel>
+                  <Select
+                    name="teacherId"
+                    defaultValue={activity.teacherId || undefined}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select teacher (optional)" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {teachers.map((teacher) => (
+                        <SelectItem key={teacher.id} value={teacher.id}>
+                          {teacher.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FieldError>{state.fieldErrors?.teacherId}</FieldError>
+                </Field>
+              )}
+
+              <Field>
+                <FieldLabel htmlFor="location">Location</FieldLabel>
+                <Input
+                  name="location"
+                  type="text"
+                  id="location"
+                  defaultValue={activity.location || ""}
+                  placeholder="e.g., Studio A, Sala principale"
+                />
+                <FieldError>{state.fieldErrors?.location}</FieldError>
+              </Field>
 
               <Field>
                 <FieldLabel htmlFor="redirectUrl">Redirect URL</FieldLabel>

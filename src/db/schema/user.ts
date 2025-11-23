@@ -15,7 +15,6 @@ export const userInformation = pgTable("user_information", {
   phoneNumber: text("phone_number"),
   address: text("address"),
   city: text("city"),
-  state: text("state"),
   zipCode: text("zip_code"),
   country: text("country"),
   birthDate: timestamp("birth_date"),
@@ -53,3 +52,6 @@ export const userSubscriptions = pgTable("user_subscriptions", {
 
 export type UserSubscriptionType = typeof userSubscriptions.$inferSelect;
 export type InsertUserSubscriptionType = typeof userSubscriptions.$inferInsert;
+
+export type UserInformationType = typeof userInformation.$inferSelect;
+export type InsertUserInformationType = typeof userInformation.$inferInsert;

@@ -27,8 +27,18 @@ import {
 } from "@/components/ui/select";
 import { CENTERS } from "@/utils/const";
 
-export default function NewActivity() {
+interface NewActivityProps {
+  teachers?: { id: string; name: string }[];
+}
+
+export default function NewActivity({ teachers }: NewActivityProps) {
   const [open, setOpen] = useState(false);
+
+  const defaultDate = new Date();
+  const dateStr = defaultDate.toISOString().split("T")[0];
+  const timeStr = `${String(defaultDate.getHours()).padStart(2, "0")}:${String(
+    defaultDate.getMinutes()
+  ).padStart(2, "0")}`;
 
   const [state, formAction, pending] = useActionState<ActionState, FormData>(
     addActivity,
@@ -71,6 +81,18 @@ export default function NewActivity() {
                 className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-sage-500 focus:outline-none focus:ring-sage-500 min-h-[100px]"
               />
               <FieldError>{state.fieldErrors?.description}</FieldError>
+            </Field>
+
+            <Field>
+              <FieldLabel htmlFor="date">Date & Time</FieldLabel>
+              <Input
+                name="date"
+                type="datetime-local"
+                id="date"
+                defaultValue={(state.date as string) || `${dateStr}T${timeStr}`}
+                required
+              />
+              <FieldError>{state.fieldErrors?.date}</FieldError>
             </Field>
 
             <div className="grid grid-cols-2 gap-4">
@@ -137,6 +159,37 @@ export default function NewActivity() {
                 <FieldError>{state.fieldErrors?.maxParticipants}</FieldError>
               </Field>
             </div>
+
+            {teachers && teachers.length > 0 && (
+              <Field>
+                <FieldLabel htmlFor="teacherId">Teacher</FieldLabel>
+                <Select name="teacherId" defaultValue="">
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select teacher (optional)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {teachers.map((teacher) => (
+                      <SelectItem key={teacher.id} value={teacher.id}>
+                        {teacher.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FieldError>{state.fieldErrors?.teacherId}</FieldError>
+              </Field>
+            )}
+
+            <Field>
+              <FieldLabel htmlFor="location">Location</FieldLabel>
+              <Input
+                name="location"
+                type="text"
+                id="location"
+                defaultValue={(state.location as string) || ""}
+                placeholder="e.g., Studio A, Sala principale"
+              />
+              <FieldError>{state.fieldErrors?.location}</FieldError>
+            </Field>
 
             <Field>
               <FieldLabel htmlFor="redirectUrl">Redirect URL</FieldLabel>

@@ -61,11 +61,14 @@
     "activeSubscriptions": "Abbonamenti Attivi",
     "yourCurrentSubscriptions": "I tuoi abbonamenti correnti",
     "noActiveSubscriptions": "Nessun abbonamento attivo",
-    "noSubscriptionsMessage": "Non hai abbonamenti attivi al momento",
+    "noSubscriptionsMessage": "Nessun abbonamento trovato",
     "newSubscriptionButton": "Nuovo abbonamento",
     "daysRemaining": "{days} giorni rimanenti",
     "expired": "Scaduto",
     "expiresOn": "Scade il {date}",
+    "expiredOn": "Scaduto il {date}",
+    "pastSubscriptions": "Abbonamenti Passati",
+    "yourSubscriptionHistory": "La tua cronologia abbonamenti",
     "entriesPerDay": "{count} ingresso/i al giorno",
     "entriesPerWeek": "{count} ingresso/i a settimana"
   },
@@ -132,7 +135,13 @@
     "toDate": "Data di fine",
     "entriesPerDay": "Ingressi al giorno",
     "entriesPerWeek": "{count} {count, plural, =1 {Ingresso} other {Ingressi}} a settimana",
-    "chooseThisPlan": "Scegli questo piano"
+    "chooseThisPlan": "Scegli questo piano",
+    "confirmPurchase": "Conferma Acquisto",
+    "reviewSubscriptionDetails": "Rivedi i dettagli",
+    "plan": "Piano",
+    "duration": "Durata",
+    "startDate": "Data di inizio",
+    "endDate": "Data di scadenza"
   }
 }
 

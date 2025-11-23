@@ -18,12 +18,12 @@ import {
   SidebarMenuItem,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { ModeToggle } from "../theme-toggle";
+import { ModeToggle } from "../toggler/theme-toggle";
 import { LanguageSwitcher } from "./language-switcher";
 import { useTranslations } from "next-intl";
 
 export function AppSidebar() {
-  const t = useTranslations('nav');
+  const t = useTranslations("nav");
 
   // Menu items.
   const items = [
@@ -33,27 +33,27 @@ export function AppSidebar() {
     //   icon: MapPin,
     // },
     {
-      title: t('users'),
+      title: t("users"),
       url: "/admin/users",
       icon: Users,
     },
     {
-      title: t('teachers'),
+      title: t("teachers"),
       url: "/admin/teachers",
       icon: GraduationCap,
     },
     {
-      title: t('activities'),
+      title: t("activities"),
       url: "/admin/activities",
       icon: Activity,
     },
     {
-      title: t('lessons'),
+      title: t("lessons"),
       url: "/admin/lessons",
       icon: BookOpen,
     },
     {
-      title: t('subscriptions'),
+      title: t("subscriptions"),
       url: "/admin/subscriptions",
       icon: CreditCard,
     },
@@ -63,7 +63,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{t('admin')}</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("admin")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

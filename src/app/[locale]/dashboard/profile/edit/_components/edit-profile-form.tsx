@@ -8,18 +8,20 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { updateProfile } from "@/db/query/user";
+import {
+  updateProfile,
+  type UserInformationWithEmailAndImage,
+} from "@/db/query/user";
 import { useActionState, useEffect } from "react";
 import { ActionState } from "@/db/utils";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Save, Loader2, UserCircle2 } from "lucide-react";
 import Link from "next/link";
-import { type UserProfileData } from "@/utils/types/user";
 
 export default function EditProfileForm({
   userProfile,
 }: {
-  userProfile: UserProfileData;
+  userProfile: UserInformationWithEmailAndImage;
 }) {
   const router = useRouter();
   const [state, formAction, pending] = useActionState<ActionState, FormData>(
@@ -42,14 +44,6 @@ export default function EditProfileForm({
     <form action={formAction} className="space-y-8">
       <div className="space-y-8">
         <div className="flex flex-col gap-4">
-          <div className="flex">
-            <Link href="/dashboard/profile">
-              <Button variant="outline" size="sm" type="button">
-                <ArrowLeft className="size-4 mr-2" />
-                Back to Profile
-              </Button>
-            </Link>
-          </div>
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-4">
               {userProfile.image ? (
@@ -79,7 +73,7 @@ export default function EditProfileForm({
           </div>
         </div>
 
-        <input type="hidden" name="userId" value={userProfile.userId} />
+        <input type="hidden" name="userId" value={userProfile.userId || ""} />
 
         {/* Error Message */}
         {state.error && (
@@ -92,152 +86,118 @@ export default function EditProfileForm({
 
         {/* Basic Information */}
         <div className="rounded-lg border bg-card p-6">
-          <h2 className="text-lg font-semibold mb-4">Basic Information</h2>
           <FieldGroup className="grid gap-6 md:grid-cols-2">
             <Field>
-              <FieldLabel htmlFor="firstName">First Name *</FieldLabel>
+              <FieldLabel htmlFor="firstName">Nome *</FieldLabel>
               <Input
                 name="firstName"
                 id="firstName"
                 type="text"
                 defaultValue={(state.firstName as string) || ""}
-                placeholder="First name"
+                placeholder="Nome"
                 required
               />
               <FieldError>{state.fieldErrors?.firstName}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="lastName">Last Name *</FieldLabel>
+              <FieldLabel htmlFor="lastName">Cognome *</FieldLabel>
               <Input
                 name="lastName"
                 id="lastName"
                 type="text"
                 defaultValue={(state.lastName as string) || ""}
-                placeholder="Last name"
+                placeholder="Cognome"
                 required
               />
               <FieldError>{state.fieldErrors?.lastName}</FieldError>
             </Field>
-
             <Field className="md:col-span-2">
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input
-                id="email"
-                type="email"
-                value={userProfile.email}
-                placeholder="email@example.com"
-                disabled
-                className="bg-muted"
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                Email cannot be changed
-              </p>
-            </Field>
-          </FieldGroup>
-        </div>
-
-        {/* Contact Information */}
-        <div className="rounded-lg border bg-card p-6">
-          <h2 className="text-lg font-semibold mb-4">Contact Information</h2>
-          <FieldGroup className="grid gap-6 md:grid-cols-2">
-            <Field className="md:col-span-2">
-              <FieldLabel htmlFor="phoneNumber">Phone Number</FieldLabel>
+              <FieldLabel htmlFor="phoneNumber">Telefono *</FieldLabel>
               <Input
                 name="phoneNumber"
                 id="phoneNumber"
                 type="tel"
+                required
                 defaultValue={(state.phoneNumber as string) || ""}
-                placeholder="+39 123 456 7890"
+                placeholder="Telefono"
               />
               <FieldError>{state.fieldErrors?.phoneNumber}</FieldError>
             </Field>
 
             <Field className="md:col-span-2">
-              <FieldLabel htmlFor="address">Address</FieldLabel>
+              <FieldLabel htmlFor="address">Indirizzo *</FieldLabel>
               <Input
                 name="address"
                 id="address"
                 type="text"
+                required
                 defaultValue={(state.address as string) || ""}
-                placeholder="Street address"
+                placeholder="Indirizzo"
               />
               <FieldError>{state.fieldErrors?.address}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="city">City</FieldLabel>
+              <FieldLabel htmlFor="city">Città *</FieldLabel>
               <Input
                 name="city"
                 id="city"
                 type="text"
+                required
                 defaultValue={(state.city as string) || ""}
-                placeholder="City"
+                placeholder="Città"
               />
               <FieldError>{state.fieldErrors?.city}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="state">State/Province</FieldLabel>
+              <FieldLabel htmlFor="state">Provincia *</FieldLabel>
               <Input
                 name="state"
                 id="state"
                 type="text"
+                required
                 defaultValue={(state.state as string) || ""}
-                placeholder="State or Province"
+                placeholder="Provincia"
               />
               <FieldError>{state.fieldErrors?.state}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="zipCode">ZIP/Postal Code</FieldLabel>
+              <FieldLabel htmlFor="zipCode">CAP *</FieldLabel>
               <Input
                 name="zipCode"
                 id="zipCode"
                 type="text"
+                required
                 defaultValue={(state.zipCode as string) || ""}
-                placeholder="ZIP or Postal Code"
+                placeholder="CAP"
               />
               <FieldError>{state.fieldErrors?.zipCode}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="country">Country</FieldLabel>
-              <Input
-                name="country"
-                id="country"
-                type="text"
-                defaultValue={(state.country as string) || ""}
-                placeholder="Country"
-              />
-              <FieldError>{state.fieldErrors?.country}</FieldError>
-            </Field>
-          </FieldGroup>
-        </div>
-
-        {/* Personal Information */}
-        <div className="rounded-lg border bg-card p-6">
-          <h2 className="text-lg font-semibold mb-4">Personal Information</h2>
-          <FieldGroup className="grid gap-6 md:grid-cols-2">
-            <Field>
-              <FieldLabel htmlFor="birthDate">Date of Birth</FieldLabel>
+              <FieldLabel htmlFor="birthDate">Data di nascita *</FieldLabel>
               <Input
                 name="birthDate"
                 id="birthDate"
                 type="date"
+                required
                 defaultValue={(state.birthDate as string) || ""}
               />
               <FieldError>{state.fieldErrors?.birthDate}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="taxCode">Tax Code / Fiscal Code</FieldLabel>
+              <FieldLabel htmlFor="taxCode">Codice fiscale *</FieldLabel>
               <Input
                 name="taxCode"
                 id="taxCode"
                 type="text"
+                required
                 defaultValue={(state.taxCode as string) || ""}
-                placeholder="Tax identification code"
+                placeholder="Codice fiscale"
               />
               <FieldError>{state.fieldErrors?.taxCode}</FieldError>
             </Field>

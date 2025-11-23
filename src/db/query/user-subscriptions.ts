@@ -1,42 +1,42 @@
 "use server";
 import { db } from "@/index";
-import { userSubscriptions, subscriptions } from "../schema";
-import { eq, and } from "drizzle-orm";
+import {
+  userSubscriptions,
+  subscriptions,
+  lessons,
+  lessonRegistrations,
+} from "../schema";
+import { eq, and, gte } from "drizzle-orm";
 import { z } from "zod";
 import { validatedAction } from "../utils";
 import { revalidatePath } from "next/cache";
 
 export async function getUserActiveSubscriptions(userId: string) {
-  const activeSubscriptions = await db
+  return await db
     .select({
       id: userSubscriptions.id,
+      userId: userSubscriptions.userId,
+      subscriptionId: subscriptions.id,
       name: subscriptions.name,
       description: subscriptions.description,
-      status: subscriptions.status,
-      activatedAt: userSubscriptions.activatedAt,
-      expiresAt: userSubscriptions.expiresAt,
       price: subscriptions.price,
       center: subscriptions.center,
       entriesPerDay: subscriptions.entriesPerDay,
       entriesPerWeek: subscriptions.entriesPerWeek,
       durationInDays: subscriptions.durationInDays,
-      fromDate: subscriptions.fromDate,
-      toDate: subscriptions.toDate,
+      status: subscriptions.status,
+      activatedAt: userSubscriptions.activatedAt,
+      expiresAt: userSubscriptions.expiresAt,
+      createdAt: userSubscriptions.createdAt,
+      updatedAt: userSubscriptions.updatedAt,
     })
     .from(userSubscriptions)
     .innerJoin(
       subscriptions,
       eq(userSubscriptions.subscriptionId, subscriptions.id)
     )
-    .where(
-      and(
-        eq(userSubscriptions.userId, userId),
-        eq(subscriptions.status, "active")
-      )
-    )
+    .where(eq(userSubscriptions.userId, userId))
     .orderBy(userSubscriptions.expiresAt);
-
-  return activeSubscriptions;
 }
 
 const addUserSubscriptionSchema = z.object({
@@ -61,7 +61,6 @@ export const addUserSubscription = validatedAction(
 
       revalidatePath("/admin/users");
       revalidatePath("/dashboard/profile");
-
       return { success: true };
     } catch (error) {
       return {
@@ -129,6 +128,25 @@ export const updateUserSubscription = validatedAction(
     }
   }
 );
+
+export const getUserNextLessons = async (userId: string) => {
+  const nextLessons = await db
+    .select()
+    .from(lessonRegistrations)
+    .innerJoin(lessons, eq(lessonRegistrations.lessonId, lessons.id))
+    .where(
+      and(
+        eq(lessonRegistrations.userId, userId),
+        gte(lessons.startTime, new Date()),
+        eq(lessons.status, "scheduled")
+      )
+    );
+  return nextLessons;
+};
+
+export type UserNextLessonType = Awaited<
+  ReturnType<typeof getUserNextLessons>
+>[number];
 
 export type UserSubscriptionType = Awaited<
   ReturnType<typeof getUserActiveSubscriptions>

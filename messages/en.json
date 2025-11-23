@@ -61,11 +61,14 @@
     "activeSubscriptions": "Active Subscriptions",
     "yourCurrentSubscriptions": "Your current subscriptions",
     "noActiveSubscriptions": "No active subscriptions",
-    "noSubscriptionsMessage": "You don't have any active subscriptions at the moment",
+    "noSubscriptionsMessage": "No subscriptions found",
     "newSubscriptionButton": "New subscription",
     "daysRemaining": "{days} days remaining",
     "expired": "Expired",
     "expiresOn": "Expires on {date}",
+    "expiredOn": "Expired on {date}",
+    "pastSubscriptions": "Past Subscriptions",
+    "yourSubscriptionHistory": "Your subscription history",
     "entriesPerDay": "{count} entry/entries per day",
     "entriesPerWeek": "{count} entry/entries per week"
   },
@@ -132,7 +135,13 @@
     "toDate": "To Date",
     "entriesPerDay": "Entries per day",
     "entriesPerWeek": "{count} {count, plural, =1 {Entry} other {Entries}} per week",
-    "chooseThisPlan": "Choose this plan"
+    "chooseThisPlan": "Choose this plan",
+    "confirmPurchase": "Confirm Purchase",
+    "reviewSubscriptionDetails": "Please review your subscription details before confirming",
+    "plan": "Plan",
+    "duration": "Duration",
+    "startDate": "Start Date",
+    "endDate": "End Date"
   }
 }
 

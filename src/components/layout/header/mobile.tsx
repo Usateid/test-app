@@ -13,10 +13,14 @@ export default function MobileBottomTabs({
     { name: "Home", href: "/dashboard", icon: Home },
     { name: "Blog", href: "/blog", icon: Book },
     { name: "Prenota", href: "/dashboard/booking", icon: Plus },
-    { name: "Subscriptions", href: "/dashboard/subscriptions", icon: CreditCard },
+    {
+      name: "Subscriptions",
+      href: "/dashboard/subscriptions",
+      icon: CreditCard,
+    },
     { name: "Profilo", href: "/dashboard/profile", icon: User },
   ];
-  const unauthenticatedTabs = [{ name: "Login", href: "/sign-in", icon: User }];
+  const unauthenticatedTabs = [{ name: "Login", href: "/login", icon: User }];
 
   const tabs = isAuthenticated ? userTabs : unauthenticatedTabs;
 

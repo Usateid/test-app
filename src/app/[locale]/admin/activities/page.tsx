@@ -1,9 +1,13 @@
 import { getActivities } from "@/db/query/activities";
+import { getTeachers } from "@/db/query/user";
 import NewActivity from "./_components/new-activity";
 import ListActivities from "./_components/list-activities";
 
 export default async function ActivitiesPage() {
-  const activities = await getActivities();
+  const [activities, teachers] = await Promise.all([
+    getActivities(),
+    getTeachers(),
+  ]);
 
   return (
     <div className="space-y-6">
@@ -14,11 +18,11 @@ export default async function ActivitiesPage() {
             Manage and view all registered activities
           </p>
         </div>
-        <NewActivity />
+        <NewActivity teachers={teachers} />
       </div>
 
       <div className="w-full">
-        <ListActivities activities={activities} />
+        <ListActivities activities={activities} teachers={teachers} />
       </div>
     </div>
   );

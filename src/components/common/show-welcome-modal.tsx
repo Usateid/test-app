@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { usePathname } from "@/i18n/routing";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,21 +17,26 @@ export default function ShowWelcomeModal({
 }: {
   firstName?: string;
 }) {
-  const [open, setOpen] = useState(true);
+  const pathname = usePathname();
+  const [open, setOpen] = useState(pathname !== "/dashboard/profile/edit");
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-[425px]" showCloseButton={false}>
+      <DialogContent showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>Welcome {firstName}!</DialogTitle>
         </DialogHeader>
         <DialogDescription>
-          Since this is your first login, please take a moment to fill out your
-          profile.
+          <span>Benvenuto nella nostra piattaforma.</span>
+          <span>
+            Prima di iniziare ad esplorarla, ti invitiamo a completare il tuo
+            profilo.
+          </span>
         </DialogDescription>
-        <DialogFooter className="w-full">
-          <Link href="/dashboard/profile/edit">
-            <Button onClick={() => setOpen(false)}>Go to Profile</Button>
-          </Link>
+        <DialogFooter>
+          <Button asChild onClick={() => setOpen(false)}>
+            <Link href="/dashboard/profile/edit">Modifica</Link>
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

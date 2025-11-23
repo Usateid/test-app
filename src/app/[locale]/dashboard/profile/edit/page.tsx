@@ -9,5 +9,9 @@ export default async function ProfileEditPage() {
     redirect("/login");
   }
 
-  return <EditProfileForm userProfile={userInfo} />;
+  return (
+    <div className="m-4">
+      <EditProfileForm userProfile={userInfo} />
+    </div>
+  );
 }

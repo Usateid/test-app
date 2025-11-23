@@ -13,6 +13,7 @@ function getFieldErrors(error: z.ZodError) {
 export type ActionState = {
   error?: string;
   success?: boolean;
+  message?: string;
   fieldErrors?: Record<string, string>; // Errori specifici per campo
   [key: string]: unknown; // This allows for additional properties
 };

@@ -1,18 +1,31 @@
-import SubscriptionCard from "@/components/layout/cards/subscription";
-import { getSubscriptions } from "@/db/query/subscriptions";
+import CardProductDemo from "@/components/ui/card-image";
+import { SubscriptionType } from "@/db/schema/subscriptions";
+import { UserSubscriptionType } from "@/db/query/user-subscriptions";
 
-export default async function UserSubscriptionsList() {
-  const availableSubscriptions = await getSubscriptions();
+export default async function UserSubscriptionsList({
+  availableSubscriptions,
+  userId,
+  activeSubscriptions,
+}: {
+  availableSubscriptions: SubscriptionType[];
+  activeSubscriptions: UserSubscriptionType[];
+  userId?: string;
+}) {
   if (availableSubscriptions.length === 0) {
     return <div>No subscriptions found</div>;
   }
+
+  const lastActiveSubscription =
+    activeSubscriptions[activeSubscriptions.length - 1];
   return (
     <div className="flex flex-col gap-4">
-      {/* <div className="group relative flex w-full snap-x snap-mandatory gap-8 items-start overflow-x-auto overflow-y-hidden justify-start pl-4 lg:pl-0"> */}
       {availableSubscriptions.map((subscription) => (
-        <div key={subscription.id}>
-          <SubscriptionCard subscription={subscription} />
-        </div>
+        <CardProductDemo
+          key={subscription.id}
+          subscription={subscription}
+          userId={userId}
+          activeSubscriptions={lastActiveSubscription}
+        />
       ))}
     </div>
   );

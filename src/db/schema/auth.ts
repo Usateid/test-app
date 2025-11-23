@@ -1,13 +1,10 @@
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
 
-export type UserType = typeof user.$inferSelect;
-export type InsertUserType = typeof user.$inferInsert;
-
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  emailVerified: boolean("email_verified").default(false).notNull(),
+  emailVerified: boolean("email_verified").notNull().default(false),
   image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
@@ -62,3 +59,12 @@ export const verification = pgTable("verification", {
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+
+export type User = typeof user.$inferSelect;
+export type InsertUser = typeof user.$inferInsert;
+
+export type Session = typeof session.$inferSelect;
+export type InsertSession = typeof session.$inferInsert;
+
+export type Account = typeof account.$inferSelect;
+export type InsertAccount = typeof account.$inferInsert;

@@ -1,24 +1,23 @@
-import DesktopHeader from "@/components/layout/header/desktop";
-import MobileBottomTabs from "@/components/layout/header/mobile";
+import { DesktopHeader } from "@/components/layout/desktop-header";
 import { getServerSession } from "@/hooks/server-session";
 import ShowWelcomeModal from "@/components/common/show-welcome-modal";
 import PageLayout from "@/components/common/page-layout";
+import { useRouter } from "@/i18n/routing";
 
 export default async function ProfileLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated, userInfo, firstLogin } = await getServerSession();
+  const { isAuthenticated, userInfo } = await getServerSession();
 
   return (
     <>
       <DesktopHeader isAuthenticated={isAuthenticated} />
       <PageLayout>
-        <div className="mb-20 max-w-5xl mx-auto">{children}</div>
+        <div className="md:max-w-5xl lg:max-w-full mx-auto">{children}</div>
       </PageLayout>
-      {firstLogin && <ShowWelcomeModal firstName={userInfo?.firstName ?? ""} />}
-      <MobileBottomTabs isAuthenticated={isAuthenticated} />
+      {/* {firstLogin && <ShowWelcomeModal firstName={userInfo?.firstName ?? ""} />} */}
     </>
   );
 }
