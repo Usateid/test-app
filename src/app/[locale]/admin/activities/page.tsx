@@ -5,7 +5,7 @@ import ListActivities from "./_components/list-activities";
 
 export default async function ActivitiesPage() {
   const [activities, teachers] = await Promise.all([
-    getActivities(),
+    getActivities({ limit: 50 }),
     getTeachers(),
   ]);
 

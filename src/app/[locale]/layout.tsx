@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { DesktopHeader } from "@/components/layout/desktop-header";
+import { getServerSession } from "@/hooks/server-session";
 
 import "../globals.css";
 
@@ -29,13 +31,12 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
+  const { isAuthenticated } = await getServerSession();
+
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
@@ -48,7 +49,10 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <div className="min-h-screen bg-background">
+              <DesktopHeader isAuthenticated={isAuthenticated} />
+              {children}
+            </div>
             <Toaster richColors />
           </ThemeProvider>
         </NextIntlClientProvider>

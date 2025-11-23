@@ -16,7 +16,7 @@ import {
 const navigation = [
   { name: "Chi Siamo", href: "/about" },
   { name: "Lezioni", href: "/classes" },
-  { name: "Abbonamenti", href: "/schedule" },
+  { name: "Attività", href: "/activities" },
   { name: "Centri", href: "/schedule" },
   { name: "Contatti", href: "/contact" },
 ];
@@ -27,7 +27,7 @@ export function DesktopHeader({
   isAuthenticated: boolean;
 }) {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-50 backdrop-blur-sm bg-background/80 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

@@ -153,14 +153,14 @@ export default function AllSubscriptions({
       )}
 
       {/* Confirmation Dialog */}
-      {userId && selectedSubscription && (
+      {/* {userId && selectedSubscription && (
         <SubscriptionConfirmationDialog
           subscription={selectedSubscription}
           userId={userId}
           open={dialogOpen}
           onOpenChange={setDialogOpen}
         />
-      )}
+      )} */}
     </div>
   );
 }

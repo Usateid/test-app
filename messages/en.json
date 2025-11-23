@@ -142,6 +142,28 @@
     "duration": "Duration",
     "startDate": "Start Date",
     "endDate": "End Date"
+  },
+  "activities": {
+    "title": "Our Activities",
+    "subtitle": "Discover a world of unique experiences: from exclusive events to beach walks, aperitifs and masterclasses. Each activity is designed to enrich your wellness journey and create unforgettable moments.",
+    "discover": "Discover",
+    "noActivities": "No activities available at the moment",
+    "minutes": "minutes",
+    "participants": "{min}-{max} participants",
+    "participantsRange": "From {min} to {max} participants",
+    "learnMore": "Learn more",
+    "backToActivities": "Back to activities",
+    "about": "About",
+    "details": "Details",
+    "date": "Date and time",
+    "duration": "Duration",
+    "location": "Location",
+    "center": "Center",
+    "joinUs": "Join us",
+    "joinDescription": "Register to participate in this activity and experience a unique moment with our community.",
+    "registerNow": "Register now",
+    "alreadyMember": "Already a member?",
+    "login": "Login"
   }
 }
 

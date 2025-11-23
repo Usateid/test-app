@@ -10,21 +10,12 @@ import { AboutSection } from "@/components/layout/about-section";
 import { ContactSection } from "@/components/layout/contact-section";
 
 export default async function Home() {
-  const { isAuthenticated } = await getServerSession();
-  const t = await getTranslations("common");
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Responsive Header */}
-      <DesktopHeader isAuthenticated={isAuthenticated} />
-
-      {/* Main Content */}
-      <main>
-        <HeroSection />
-        <ClassesSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-    </div>
+    <main>
+      <HeroSection />
+      <ClassesSection />
+      <AboutSection />
+      <ContactSection />
+    </main>
   );
 }

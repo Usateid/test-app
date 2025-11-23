@@ -142,6 +142,28 @@
     "duration": "Durata",
     "startDate": "Data di inizio",
     "endDate": "Data di scadenza"
+  },
+  "activities": {
+    "title": "Le Nostre Attività",
+    "subtitle": "Scopri un mondo di esperienze uniche: da eventi esclusivi a camminate sulla spiaggia, aperitivi e masterclass. Ogni attività è pensata per arricchire il tuo percorso di benessere e creare momenti indimenticabili.",
+    "discover": "Scopri",
+    "noActivities": "Nessuna attività disponibile al momento",
+    "minutes": "minuti",
+    "participants": "{min}-{max} partecipanti",
+    "participantsRange": "Da {min} a {max} partecipanti",
+    "learnMore": "Scopri di più",
+    "backToActivities": "Torna alle attività",
+    "about": "Informazioni",
+    "details": "Dettagli",
+    "date": "Data e ora",
+    "duration": "Durata",
+    "location": "Luogo",
+    "center": "Centro",
+    "joinUs": "Unisciti a noi",
+    "joinDescription": "Registrati per partecipare a questa attività e vivere un'esperienza unica insieme alla nostra comunità.",
+    "registerNow": "Registrati ora",
+    "alreadyMember": "Sei già membro?",
+    "login": "Accedi"
   }
 }
 
